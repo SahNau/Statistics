@@ -25,18 +25,24 @@ public class StatsService {
 
     public int findMaxPurchasesMonth(long[] purchases) {
         long purchasesMax = purchases[0];
+        for (long purchase : purchases) {
+            if (purchasesMax < purchase) {
+                purchasesMax = purchase;
+            }
+        }
         int month = 0;
         int maxMonth = 0;
         for (long purchase : purchases) {
             month = month + 1;
-            if (purchasesMax < purchase) {
-                purchasesMax = purchase;
+            if (purchase == purchasesMax) {
                 maxMonth = month;
             }
         }
-        System.out.println("Номер месяца, в котором был пик продаж:" + maxMonth);
-        return maxMonth;
-    }
+            System.out.println("Номер месяца, в котором был пик продаж:" + maxMonth);
+            return maxMonth;
+        }
+
+
 
     public long findMinimumPurchasesMonth(long[] purchases) {
         long purchasesMini = purchases[0];
