@@ -46,12 +46,16 @@ public class StatsService {
 
     public long findMinimumPurchasesMonth(long[] purchases) {
         long purchasesMini = purchases[0];
+        for (long purchase : purchases) {
+            if (purchasesMini > purchase) {
+                purchasesMini = purchase;
+            }
+        }
         long month = 0;
         long miniMonth = 0;
         for (long purchase : purchases) {
             month = month + 1;
-            if (purchasesMini > purchase) {
-                purchasesMini = purchase;
+            if (purchase == purchasesMini) {
                 miniMonth = month;
             }
         }
